@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [shadow, setShadow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,14 +35,31 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navigation Links */}
-      <ul className="flex space-x-4 mb-2">
-      <li><Link to="/" className="hover:text-blue-500">Home</Link></li>
-          <li><Link to="/attendance" className="hover:text-blue-500">Attendance</Link></li>
-          <li><Link to="/resources" className="hover:text-blue-500">Placement Resource Hub </Link></li>
-          <li><Link to="/about" className="hover:text-blue-500">About</Link></li>
-          
+      {/* Desktop Navigation */}
+      <ul className="hidden md:flex space-x-4 mb-2">
+        <li><Link to="/" className="hover:text-blue-500">Home</Link></li>
+        <li><Link to="/attendance" className="hover:text-blue-500">Attendance</Link></li>
+        <li><Link to="/resources" className="hover:text-blue-500">Placement Resource Hub</Link></li>
+        <li><Link to="/about" className="hover:text-blue-500">About</Link></li>
       </ul>
+
+      {/* Mobile Menu Button */}
+      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      </button>
+
+      {/* Sidebar for Mobile */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-white md:hidden">
+          <button className="absolute top-6 right-6" onClick={() => setIsOpen(false)}>
+            <FiX size={30} />
+          </button>
+          <Link to="/" className="text-lg" onClick={() => setIsOpen(false)}>Home</Link>
+          <Link to="/attendance" className="text-lg" onClick={() => setIsOpen(false)}>Attendance</Link>
+          <Link to="/resources" className="text-lg" onClick={() => setIsOpen(false)}>Placement Resource Hub</Link>
+          <Link to="/about" className="text-lg" onClick={() => setIsOpen(false)}>About</Link>
+        </div>
+      )}
 
       {/* Ragging Notice */}
       <div className="absolute bottom-0 right-4">

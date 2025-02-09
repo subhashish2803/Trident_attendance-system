@@ -39,18 +39,18 @@ const Resources = () => {
       ),
     },
     {
-        id: "videos",
-        number: "04",
-        title: "📹 Video Resources",
-        description: "Watch curated videos to improve your placement skills.",
-        content: (
-          <ul className="list-disc pl-6 text-gray-300">
-            <li><a href="https://www.youtube.com/watch?v=XYZ123" target="_blank" rel="noopener noreferrer" className="text-pink-400">Aptitude Crash Course</a></li>
-            <li><a href="https://www.youtube.com/watch?v=ABC456" target="_blank" rel="noopener noreferrer" className="text-pink-400">DSA Interview Tips</a></li>
-          </ul>
-        ),
-      },
-      {
+      id: "videos",
+      number: "04",
+      title: "📹 Video Resources",
+      description: "Watch curated videos to improve your placement skills.",
+      content: (
+        <ul className="list-disc pl-6 text-gray-300">
+          <li><a href="https://www.youtube.com/watch?v=XYZ123" target="_blank" rel="noopener noreferrer" className="text-pink-400">Aptitude Crash Course</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ABC456" target="_blank" rel="noopener noreferrer" className="text-pink-400">DSA Interview Tips</a></li>
+        </ul>
+      ),
+    },
+    {
         id: "companies",
         number: "05",
         title: "🏢 Company-wise Preparation",
@@ -76,9 +76,9 @@ const Resources = () => {
   ];
 
   return (
-    <div className="p-6 pt-20 max-w-6xl mx-auto">
+    <div className="p-6 pt-40 max-w-6xl mx-auto md:mt-6">
       <motion.h2 
-        className="text-2xl font-semibold text-center text-black"
+        className="text-2xl sm:mt-6 font-semibold text-center text-black sm:text-3xl"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -86,7 +86,7 @@ const Resources = () => {
         📚 Placement Resource Hub
       </motion.h2>
       <motion.p 
-        className="text-center mt-2 text-gray-950"
+        className="text-center mt-2 text-gray-950 sm:text-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -95,7 +95,7 @@ const Resources = () => {
       </motion.p>
 
       {/* Grid Layout */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {sections.map(({ id, number, title, description, content }) => (
           <motion.div 
             key={id} 
@@ -118,18 +118,18 @@ const Resources = () => {
 
             {/* Section Header & Description */}
             <div className="mt-4 flex flex-col md:flex-row md:items-center md:justify-between">
-              <div className="md:w-1/2">
-                <h4 className="mb-2 text-sm font-semibold text-slate-200">{title}</h4>
-                <p className="text-gray-400">{description}</p>
+              <div className="md:w-full">
+                <h4 className="mb-2 text-sm font-semibold text-slate-200 sm:text-base">{title}</h4>
+                <p className="text-gray-400 text-sm sm:text-base">{description}</p>
               </div>
 
               {/* Glowing Card Effect */}
               <motion.div 
-                className="md:w-1/2 relative"
+                className="w-full relative mt-4"
                 whileHover={{ scale: 1.03 }}
               >
                 <div className="absolute -inset-1.5 bg-gradient-to-r from-pink-700 to-purple-600 rounded-xl blur opacity-75"></div>
-                <div className="relative rounded-xl bg-gray-900 p-4 text-gray-300">
+                <div className="relative rounded-xl bg-gray-900 p-4 text-gray-300 text-sm sm:text-base">
                   {content}
                 </div>
               </motion.div>
